@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Continental</title>
+    <link src rel="stylesheet" href="estilos.css">
+    <link src rel="script" href="script.js">
+    <link rel="icon" type="image/png" href="./Continental/logo de pagina .jpg">
+</head>
+
+<body>
+    <nav><!--navar-->
+        <div class="nav-container">
+            <div class="logo">Call Of Duty:Moblie</div>
+            <ul class="nav-links">
+                <li><a href="Index.html">Inicio</a></li>
+                <li><a href="clanes.html">Clanes</a></li>
+                <li><a href="ranking.html">Ranking</a></li>
+                <li><a href="salas.html">Salas</a></li>
+     <!--           <li><a href="Login.html" class="cta-button">Inicio</a></li>
+                <li><a href="registrarse.html" class="cta-button">REGISTRARSE</a></li> -->
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <script> 
+           const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+</script>
+            </div>
+        </div>
+    </nav>
