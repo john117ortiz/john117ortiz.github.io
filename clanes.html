@@ -12,7 +12,7 @@
         <div class="nav-container">
             <div class="logo">Call Of Duty: Mobile</div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="Index.html">Inicio</a></li>
+                <li><a href="index.html">Inicio</a></li>
                 <li><a href="clanes.html">Clanes</a></li>
                 <li><a href="ranking.html">Ranking</a></li>
                 <li><a href="salas.html">Salas</a></li>
@@ -216,30 +216,6 @@
         <p></p>
     </footer>
 
-     <!-- Navbar hamburger script -->
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-    </script>
 </body>
 </html>
