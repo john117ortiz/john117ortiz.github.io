@@ -1,497 +1,799 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+     * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        :root {
-            --gold: #FFD700;
-            --yellow-accent: #e6f702;
-            --danger-red: #ff0707;
-        }
+:root {
+    --gold: #FFD700;
+    --yellow-accent: #e6f702;
+    --danger-red: #ff0707;
+    --dark-bg: #000;
+    --section-padding: 4rem 2rem;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-            min-height: 100vh;
-            color: #fff;
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+    min-height: 100vh;
+    color: #fff;
+}
 
-        /* Navbar */
-        nav {
-            background: rgba(0, 0, 0, 0.95);
-            border-bottom: 2px solid var(--yellow-accent);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
+/* ============= NAVBAR MEJORADO ============= */
+nav {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 2px solid var(--yellow-accent);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--yellow-accent);
-            text-shadow: 0 0 10px rgba(230, 247, 2, 0.5);
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--yellow-accent);
+    text-shadow: 0 0 10px rgba(230, 247, 2, 0.5);
+}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+.nav-links a:not(.cta-button)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
 
-        .nav-links a:hover {
-            color: var(--gold);
-        }
+.nav-links a:not(.cta-button):hover::after {
+    width: 100%;
+}
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 5px;
-        }
+.nav-links a:hover {
+    color: var(--gold);
+}
 
-        .hamburger span {
-            width: 28px;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
+.cta-button {
+    background: var(--gold);
+    color: #000 !important;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
 
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
+.cta-button:hover {
+    background: var(--yellow-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+}
 
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
+.cta-button::after {
+    display: none;
+}
 
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
-        }
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    padding: 5px;
+}
 
-        /* Hero Section */
-        .hero-logo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 4px solid var(--gold);
-            margin: 3rem auto 2rem;
-            display: block;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            animation: pulse 3s infinite;
-        }
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
 
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
-            }
-        }
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
 
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            text-align: center;
-        }
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
 
-        .content h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 1rem;
-            color: var(--gold);
-            text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.5);
-            animation: fadeInDown 0.8s ease;
-        }
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
 
-        .content h2 {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            margin-bottom: 1rem;
-            color: var(--gold);
-            text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.5);
-        }
+/* ============= HERO SECTION ============= */
+.hero-section {
+    padding: var(--section-padding);
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .content h3 {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            margin: 2rem 0 1rem;
-            color: var(--danger-red);
-            text-shadow: 2px 2px 8px rgba(255, 7, 7, 0.5);
-        }
+.hero-logo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    margin: 0 auto 2rem;
+    display: block;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+    animation: pulse 3s infinite;
+}
 
-        .content p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            opacity: 0.9;
-            line-height: 1.6;
-        }
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
+        transform: scale(1.02);
+    }
+}
 
-        /* Rules Box */
-        .box {
-            max-width: 900px;
-            margin: 1.5rem auto;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.1) 100%);
-            border: 2px solid var(--gold);
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
-            text-align: left;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease;
-        }
+.hero-content {
+    animation: fadeInUp 0.8s ease;
+}
 
-        .box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
-        }
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+    color: var(--gold);
+    text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.5);
+    font-weight: 900;
+}
 
-        /* Social Media Section */
-        .social-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.1) 100%);
-            border: 2px solid var(--gold);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
-        }
+.hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--yellow-accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
 
-        .social-section h2 {
-            text-align: center;
-            color: var(--gold);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 2rem;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        }
+.hero-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
 
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+/* ============= DOWNLOAD SECTION ============= */
+.download-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.1) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .social-card {
-            background: rgba(0, 0, 0, 0.6);
-            border: 2px solid var(--gold);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
+.download-title {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--gold);
+    margin-bottom: 2rem;
+    text-align: center;
+}
 
-        .social-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
-            background: rgba(255, 215, 0, 0.1);
-        }
+.download-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-        .social-icon {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--gold);
+    border-radius: 15px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    min-width: 280px;
+}
 
-        .social-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--gold);
-        }
+.download-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+    background: rgba(255, 215, 0, 0.1);
+}
 
-        .social-handle {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
+.download-icon svg {
+    width: 50px;
+    height: 50px;
+}
 
-        /* Featured Clans */
-        .clanes-destacados {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-        }
+.download-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
 
-        .clanes-destacados h2 {
-            text-align: center;
-            color: var(--gold);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 2rem;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        }
+.download-available {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+}
 
-        .clanes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+.download-store {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--gold);
+}
 
-        .clan-card-mini {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.1) 100%);
-            border: 2px solid var(--gold);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease;
-        }
+/* ============= STATS SECTION ============= */
+.stats-section {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    margin: 4rem 0;
+}
 
-        .clan-card-mini:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
-        }
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
 
-        .clan-logo-mini {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            margin: 0 auto 1rem;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-        }
+.stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 215, 0, 0.05);
+    border: 2px solid var(--gold);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
 
-        .clan-name-mini {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+}
 
-        .clan-tag-mini {
-            color: var(--yellow-accent);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
+.stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    margin-bottom: 0.5rem;
+}
 
-        .clan-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 215, 0, 0.3);
-        }
+.stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .clan-stat {
-            text-align: center;
-        }
+/* ============= SECTION SUBTITLE ============= */
+.section-subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
 
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--gold);
-        }
+/* ============= SOCIAL MEDIA ============= */
+.social-section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: var(--section-padding);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.1) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+}
 
-        .stat-label {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-        }
+.social-section h2 {
+    text-align: center;
+    color: var(--gold);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
 
-        /* Buttons */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            background: var(--gold);
-            color: #000;
-            border: 2px solid var(--gold);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-            text-transform: uppercase;
-            margin: 1rem;
-        }
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
 
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
-        }
+.social-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--gold);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
 
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: transparent;
-            color: var(--gold);
-            border: 2px solid var(--gold);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-transform: uppercase;
-            margin: 1rem;
-        }
+.social-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+    background: rgba(255, 215, 0, 0.1);
+}
 
-        .btn-secondary:hover {
-            background: var(--gold);
-            color: #000;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
-        }
+.social-icon {
+    font-size: 3rem;
+}
 
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
+.social-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--gold);
+}
 
-        /* Clanes Section */
-        .clanes-section {
-            max-width: 100%;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 4rem 2rem;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-            text-align: center;
-            margin-top: 4rem;
-        }
+.social-handle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
 
-        .clanes-section h2 {
-            color: var(--gold);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+/* ============= CLANES DESTACADOS ============= */
+.clanes-destacados {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 2rem;
+}
 
-        .clanes-status {
-            color: var(--gold);
-            font-style: italic;
-            font-size: 1.1rem;
-            margin: 2rem 0;
-            opacity: 0.8;
-        }
+.clanes-destacados h2 {
+    text-align: center;
+    color: var(--gold);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
 
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.clanes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.clan-card-mini {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.1) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    animation: fadeInUp 0.6s ease;
+}
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
+.clan-card-mini:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+}
 
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.98);
-                border-bottom: 2px solid var(--gold);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                transform: translateY(-100%);
-                opacity: 0;
-                pointer-events: none;
-                transition: all 0.3s ease;
-            }
+.clan-rank-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
 
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: all;
-            }
+.clan-rank-badge.gold {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+}
 
-            .social-grid {
-                grid-template-columns: 1fr;
-            }
+.clan-rank-badge.silver {
+    background: linear-gradient(135deg, #C0C0C0, #808080);
+    color: #000;
+}
 
-            .clanes-grid {
-                grid-template-columns: 1fr;
-            }
+.clan-rank-badge.bronze {
+    background: linear-gradient(135deg, #CD7F32, #8B4513);
+    color: #fff;
+}
 
-            .buttons-container {
-                flex-direction: column;
-            }
+.clan-logo-mini {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    margin: 1rem auto 1rem;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+}
 
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-        }
+.clan-name-mini {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
 
-                /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            border-top: 2px solid var(--gold);
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
+.clan-tag-mini {
+    color: var(--yellow-accent);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
 
-        footer p {
-            color: rgba(255, 255, 255, 0.7);
-        }
+.clan-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.clan-stat {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+}
+
+/* ============= RULES SECTION ============= */
+.rules-section {
+    padding: var(--section-padding);
+    max-width: 1400px;
+    margin: 4rem auto;
+}
+
+.rules-section h2 {
+    text-align: center;
+    color: var(--gold);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.rule-card {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.1) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 1rem;
+}
+
+.rule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+}
+
+.rule-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--gold);
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.rule-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+/* ============= BUTTONS ============= */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--gold);
+    color: #000;
+    border: 2px solid var(--gold);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+    text-transform: uppercase;
+    margin: 0.5rem;
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0.5rem;
+}
+
+.btn-secondary:hover {
+    background: var(--gold);
+    color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+/* ============= CTA SECTION ============= */
+.clanes-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: var(--section-padding);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.clanes-section h2 {
+    color: var(--gold);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.clanes-section p {
+    max-width: 800px;
+    margin: 0 auto 1rem;
+}
+
+.clanes-status {
+    color: var(--gold);
+    font-style: italic;
+    font-size: 1.1rem;
+    margin: 2rem 0;
+    opacity: 0.8;
+}
+
+/* ============= FOOTER ============= */
+footer {
+    background: rgba(0, 0, 0, 0.95);
+    border-top: 2px solid var(--gold);
+    padding: 3rem 2rem 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-social a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============= ANIMATIONS ============= */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.98);
+        border-bottom: 2px solid var(--gold);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .logo-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .download-buttons {
+        flex-direction: column;
+    }
+
+    .download-btn {
+        min-width: 100%;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .social-grid,
+    .clanes-grid,
+    .rules-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-social {
+        align-items: center;
+    }
+}
