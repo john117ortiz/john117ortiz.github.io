@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clanes - Call of Duty Mobile</title>
     <link rel="icon" type="image/png" href="logo de sala/logo de pagina .png">
-    <link rel="stylesheet" href="./clanes.css">
+    <link rel="stylesheet" href="clanes.css">
 </head>
 <body>
     <nav>
@@ -16,9 +16,7 @@
                 <li><a href="clanes.html">Clanes</a></li>
                 <li><a href="ranking.html">Ranking</a></li>
                 <li><a href="salas.html">Salas</a></li>
-                <li><a href="https://forms.gle/6PdbKF8PYXojmiov9" target="_blank" class="cta-button">
-                    <span></span> Registrar Clan
-                </a></li>
+                <li><a href="https://forms.gle/6PdbKF8PYXojmiov9" target="_blank">Registrar Clan</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -33,16 +31,45 @@
         <p>Los mejores Clanes compitiendo por la gloria en Call of Duty Mobile</p>
     </section>
 
-    <div class="clans-container">
+    <!-- Search Box -->
+    <div class="search-container">
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Buscar por ID de clan..."
+            >
+            <button class="search-button" onclick="searchClan()">🔍 Buscar</button>
+            <button class="clear-button" onclick="clearSearch()">Limpiar</button>
+        </div>
+        <div class="search-info">
+            Ingresa el ID del clan para encontrarlo rápidamente
+        </div>
+    </div>
+
+    <div class="no-results" id="noResults">
+        No se encontraron clanes con ese ID
+    </div>
+
+
+    <section class="hero">
+        <a href="https://forms.gle/yR3R5YFaVvsyxaJw8" target="_blank" class="update-btn">
+            📝 Actualizar Info de mi Clan
+        </a>
+    </section>
+    <!-- Clans Container -->
+
+    <div class="clans-container" id="clansContainer">
         <!-- Clan 1 -->
-        <div class="clan-card">
-            <div class="ranking-badge top-3">#0 Ranking</div>
+        <div class="clan-card" data-clan-id="001">
+            <div class="clan-id-badge">ID: 2026001</div>
+            <div class="ranking-badge top-3">#1 Ranking</div>
             <div class="clan-header">
                 <img src="logo de sala/logo de pagina .jpg" alt="Shadow Warriors Logo" class="clan-logo">
                 <div class="clan-info">
                     <h2 class="clan-name"></h2>
                     <p class="clan-tag">[]</p>
-                    <p class="clan-members">👥 0/0 Miembros</p>
                 </div>
             </div>
 
@@ -73,21 +100,19 @@
                     <span class="stat-value">0</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">Nivel de Clan</span>
-                    <span class="stat-value">0 ⭐</span>
                 </div>
             </div>
         </div>
 
         <!-- Clan 2 -->
-        <div class="clan-card">
-            <div class="ranking-badge top-3">#0 Ranking</div>
+        <div class="clan-card" data-clan-id="002-A">
+            <div class="clan-id-badge">ID: 2026002</div>
+            <div class="ranking-badge top-3">#2 Ranking</div>
             <div class="clan-header">
                 <img src="logo de sala/logo de pagina .jpg" alt="Elite Forces Logo" class="clan-logo">
                 <div class="clan-info">
                     <h2 class="clan-name"></h2>
                     <p class="clan-tag">[]</p>
-                    <p class="clan-members">👥 0/0 Miembros</p>
                 </div>
             </div>
 
@@ -118,21 +143,19 @@
                     <span class="stat-value">0</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">Nivel de Clan</span>
-                    <span class="stat-value">0 ⭐</span>
                 </div>
             </div>
         </div>
 
         <!-- Clan 3 -->
-        <div class="clan-card">
+        <div class="clan-card" data-clan-id="2026003">
+            <div class="clan-id-badge">ID: 2026003</div>
             <div class="ranking-badge top-3">#0 Ranking</div>
             <div class="clan-header">
                 <img src="logo de sala/logo de pagina .jpg" alt="Apex Legends Logo" class="clan-logo">
                 <div class="clan-info">
                     <h2 class="clan-name"></h2>
                     <p class="clan-tag">[]</p>
-                    <p class="clan-members">👥 0/0 Miembros</p>
                 </div>
             </div>
 
@@ -163,21 +186,19 @@
                     <span class="stat-value">0</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">Nivel de Clan</span>
-                    <span class="stat-value">0 ⭐</span>
                 </div>
             </div>
         </div>
 
         <!-- Clan 4 -->
-        <div class="clan-card">
-            <div class="ranking-badge">#0 Ranking</div>
+        <div class="clan-card" data-clan-id="2026004">
+            <div class="clan-id-badge">ID: 2026004</div>
+            <div class="ranking-badge">#4 Ranking</div>
             <div class="clan-header">
                 <img src="logo de sala/logo de pagina .jpg" alt="Venom Squad Logo" class="clan-logo">
                 <div class="clan-info">
                     <h2 class="clan-name"></h2>
                     <p class="clan-tag">[]</p>
-                    <p class="clan-members">👥 0/0 Miembros</p>
                 </div>
             </div>
 
@@ -208,12 +229,11 @@
                     <span class="stat-value">0</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">Nivel de Clan</span>
-                    <span class="stat-value">0 ⭐</span>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -243,6 +263,69 @@
         </div>
     </footer>
 
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
 
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Search functionality
+        function searchClan() {
+            const searchValue = document.getElementById('searchInput').value.trim().toUpperCase();
+            const clanCards = document.querySelectorAll('.clan-card');
+            const noResults = document.getElementById('noResults');
+            let foundCount = 0;
+
+            if (searchValue === '') {
+                clearSearch();
+                return;
+            }
+
+            clanCards.forEach(card => {
+                const clanId = card.getAttribute('data-clan-id').toUpperCase();
+                
+                if (clanId.includes(searchValue)) {
+                    card.classList.remove('hidden');
+                    foundCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (foundCount === 0) {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            const clanCards = document.querySelectorAll('.clan-card');
+            const noResults = document.getElementById('noResults');
+
+            clanCards.forEach(card => {
+                card.classList.remove('hidden');
+            });
+
+            noResults.classList.remove('show');
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
 </body>
-</html>
