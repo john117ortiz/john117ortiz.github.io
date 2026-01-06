@@ -518,3 +518,246 @@ footer {
     border-top: 1px solid rgba(255, 215, 0, 0.2);
     color: rgba(255, 255, 255, 0.5);
 }
+
+        /* Estilos específicos para la página de configuración */
+        .gameplay-settings {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+            color: #fff;
+            border: 2px solid var(--gold);
+        }
+
+        .gameplay-settings h2 {
+            color: var(--yellow-accent);
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(230, 247, 2, 0.5);
+        }
+
+        .gameplay-settings > ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gameplay-settings > ul > li {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid var(--yellow-accent);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gameplay-settings > ul > li:first-child {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(230, 247, 2, 0.3));
+            border-left: 5px solid var(--yellow-accent);
+            text-align: center;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .gameplay-settings h3 {
+            color: var(--yellow-accent);
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.3rem;
+            text-shadow: 0 0 5px rgba(230, 247, 2, 0.3);
+        }
+
+        .gameplay-settings ul ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+            list-style: none;
+        }
+
+        .gameplay-settings ul ul li {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+            border-left: 2px solid var(--gold);
+            color: #fff;
+        }
+
+        .game-mode {
+            background: rgba(255, 215, 0, 0.15);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--gold);
+        }
+
+        .game-mode h3 {
+            color: var(--gold);
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-weight: 600;
+            color: var(--yellow-accent);
+        }
+
+        .setting-value {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.2);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .warning-box p {
+            color: #fff;
+            margin: 0.5rem 0;
+        }
+
+        .restriction-category {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            border-left: 4px solid #ff4444;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .restriction-category h4 {
+            color: #ff6b6b;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .restriction-category p,
+        .restriction-category ul li {
+            color: #fff;
+        }
+
+        .allowed-category {
+            background: rgba(40, 167, 69, 0.2);
+            border-left: 4px solid #28a745;
+        }
+
+        .allowed-category h3 {
+            color: #51cf66 !important;
+        }
+
+        /* Estilos para items con imágenes desplegables */
+        .item-with-image {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .item-with-image:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateX(5px);
+        }
+
+        .item-name {
+            flex: 1;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .toggle-image-btn {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .toggle-image-btn:hover {
+            background: var(--yellow-accent);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .toggle-image-btn:active {
+            transform: scale(0.95);
+        }
+
+        .item-image-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            margin-top: 0;
+        }
+
+        .item-image-container.active {
+            max-height: 500px;
+            margin-top: 1rem;
+        }
+
+        .item-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .image-placeholder {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px dashed var(--gold);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--yellow-accent);
+        }
+
+        @media (max-width: 768px) {
+            .gameplay-settings {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            .setting-item {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .item-with-image {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            .toggle-image-btn {
+                width: 100%;
+            }
+        }

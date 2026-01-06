@@ -1,0 +1,321 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #FFD700;
+            --yellow-accent: #e6f702;
+            --dark-bg: #0a0a0a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: auto;
+        }
+
+        /* Navbar */
+        nav {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 2px solid var(--yellow-accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--yellow-accent);
+            text-shadow: 0 0 10px rgba(230, 247, 2, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Tournament Header */
+        .tournament-header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            background: linear-gradient(180deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+        }
+
+        .tournament-header h1 {
+            color: var(--yellow-accent);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(230, 247, 2, 0.6);
+        }
+
+        .tournament-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-label {
+            color: var(--gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-value {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Bracket Container */
+        .bracket-container {
+            padding: 2rem;
+            overflow-x: auto;
+            min-height: 80vh;
+        }
+
+        .bracket {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            min-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Round Column */
+        .round {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            min-width: 200px;
+        }
+
+        .round-title {
+            text-align: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+
+        .round-matches {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            flex: 1;
+            gap: 2rem;
+        }
+
+        /* Match Container */
+        .match {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        /* Team Slot */
+        .team {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.8) 100%);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .team:hover {
+            border-color: var(--gold);
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .team:hover::before {
+            opacity: 1;
+        }
+
+        .team.winner {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(230, 247, 2, 0.1) 100%);
+            border-color: var(--yellow-accent);
+            box-shadow: 0 0 20px rgba(230, 247, 2, 0.3);
+        }
+
+        .team.winner::before {
+            opacity: 1;
+            background: var(--yellow-accent);
+        }
+
+        .team-name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .team.winner .team-name {
+            color: var(--yellow-accent);
+            text-shadow: 0 0 10px rgba(230, 247, 2, 0.5);
+        }
+
+        .team-score {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--gold);
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .team.empty {
+            background: rgba(255, 255, 255, 0.02);
+            border-style: dashed;
+            border-color: rgba(255, 215, 0, 0.2);
+            cursor: default;
+        }
+
+        .team.empty:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .team.empty .team-name {
+            color: rgba(255, 255, 255, 0.3);
+            font-style: italic;
+        }
+
+        /* Connector Lines */
+        .connector {
+            position: absolute;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            z-index: -1;
+        }
+
+        /* Final Round Special */
+        .round.final {
+            justify-content: center;
+        }
+
+        .champion-banner {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(230, 247, 2, 0.2) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .champion-banner h3 {
+            color: var(--yellow-accent);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(230, 247, 2, 0.5);
+        }
+
+        .champion-name {
+            color: var(--gold);
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bracket-container {
+                padding: 1rem;
+            }
+
+            .bracket {
+                gap: 1.5rem;
+                min-width: 1000px;
+            }
+
+            .round {
+                min-width: 150px;
+            }
+
+            .team {
+                padding: 0.8rem 1rem;
+                min-height: 50px;
+            }
+
+            .team-name {
+                font-size: 0.9rem;
+            }
+
+            .tournament-info {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 2px solid var(--gold);
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+        }
